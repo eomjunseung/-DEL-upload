@@ -36,7 +36,9 @@ public class ItemController {
     }
     @PostMapping("/items/new")
     public String saveItem(@ModelAttribute ItemForm form, RedirectAttributes redirectAttributes) throws IOException {
+        //파일저장
         UploadFile attachFile = fileStore.storeFile(form.getAttachFile());
+        //여러 이미지 저장
         List<UploadFile> storeImageFiles = fileStore.storeFiles(form.getImageFiles());
 
         //데이터베이스에 저장
